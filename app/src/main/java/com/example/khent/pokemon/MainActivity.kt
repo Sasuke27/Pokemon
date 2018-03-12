@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                     val front_default = jsonObj2.getString("front_default")
 
                     pokemonList.add(PokemonItems(id, pname, Sprites(front_default)))
-
+                    recyclerView.adapter = PokemonAdapter(pokemonList)
 
                     if(pokemonList.size!=0)
                     {
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        recyclerView.adapter = PokemonAdapter(pokemonList)
+
         recyclerView.layoutManager = LinearLayoutManager(this)
 
 
