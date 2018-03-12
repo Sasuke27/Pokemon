@@ -18,7 +18,6 @@ import org.jetbrains.anko.uiThread
 class MainActivity : AppCompatActivity() {
 
     internal lateinit var recyclerView: RecyclerView
-    private lateinit var retrofit: Retrofit
     private lateinit var progressBar: ProgressBar
     private lateinit var textPokemon: TextView
 
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        findview()
 
         for (i in 1 ..20)
         {
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
                     pokemonList.add(PokemonItems(id, pname, Sprites(front_default)))
 
-                    recyclerView.adapter = PokemonAdapter(pokemonList)
+
                     if(pokemonList.size!=0)
                     {
                         textPokemon.text = "You have "+pokemonList.size.toString() + " Pokemons"
@@ -59,8 +58,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        recyclerView.adapter = PokemonAdapter(pokemonList)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
 
+    }
+    fun findview(){
+        recyclerView = findViewById<RecyclerView>(R.id.recyclerView1)
     }
 
 }
